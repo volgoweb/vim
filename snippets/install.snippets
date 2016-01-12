@@ -1,0 +1,32 @@
+snippet schema
+	/**
+	 * Implementation of hook_schema().
+	 */
+	function ${1}_schema() {
+		$schema = array();
+
+		$schema['${1}_choices'] = array(
+			'description' => '${2}',
+			'fields' => array(
+				'${3}' => array(
+					'description' => '${4}',
+					'type' => 'serial',
+					'unsigned' => TRUE,
+					'not null' => TRUE,
+				),
+			),
+			'indexes' => array(
+				'${5}' => array(${6}),
+			),
+			'primary key' => array('${3}'),
+		);
+
+		return $schema;
+	}
+snippet intfield
+	'${1}' => array(
+        'description' => '${2}',
+        'type' => 'int',
+        'unsigned' => ${3},
+        'not null' => ${4},
+	),

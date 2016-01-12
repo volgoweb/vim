@@ -1,0 +1,25 @@
+snippet d7behav
+/*
+ * ${3}
+ */
+(function ($) {
+  Drupal.behaviors.${1} = {
+    attach: function (context, settings) {
+      ${2} 
+    }
+  };
+})(jQuery);
+snippet bindclick
+	$('${1}').bind('click', function(){
+		${2}	
+	});
+snippet bindevent
+	$('${1}').bind('${2}', function(){
+		${3}	
+	});
+snippet con
+	console.log($1);
+snippet ready
+	$(document).ready(function () {
+		${1}
+	});

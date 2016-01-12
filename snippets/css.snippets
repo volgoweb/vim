@@ -1,0 +1,73 @@
+snippet bg
+	background-
+snippet bgcolor
+	background-color: #${1};${2}
+snippet bgimg
+	background-image: url("${1}");${2}
+snippet w
+	width: ${1}px;
+snippet h
+	height: ${1}px;
+snippet lh
+	line-height: ${1}px;
+snippet ml
+	margin-left: ${1}px;
+snippet pl
+	padding-left: ${1}px;
+snippet mr
+	margin-right: ${1}px;
+snippet pr
+	padding-right: ${1}px;
+snippet mt
+	margin-top: ${1}px;
+snippet pt
+	padding-top: ${1}px;
+snippet mb
+	margin-bottom: ${1}px;
+snippet pb
+	padding-bottom: ${1}px;
+snippet p
+	padding: ${1}px;
+snippet m 
+	margin: ${1}px;
+snippet trans
+	transparent;
+snippet fl
+	float: left;
+snippet fr
+	float: right;
+snippet col
+	color: #${1};
+snippet fs
+	font-size: ${1}px;${2}
+snippet f
+	font-
+snippet b
+	bold
+snippet bold
+	font-weight: bold;${1}
+snippet fw
+	font-weight: ${1:bold};${2}
+snippet upper
+	text-transform: uppercase;
+snippet under
+	text-decoration: underline;
+snippet hide
+	display: none;
+snippet overh
+	overflow: hidden;
+snippet gradient
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(${bottom_color}), to(${top_color}));
+
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, ${top_color}, ${bottom_color});
+
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, ${top_color}, ${bottom_color});
+
+	/* IE 10 */
+	background: -ms-linear-gradient(top, ${top_color}, ${bottom_color});
+
+	/* Opera 11.10+ */
+	background: -o-linear-gradient(top, ${top_color}, ${bottom_color});

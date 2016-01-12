@@ -1,0 +1,209 @@
+snippet #!
+	#!/usr/bin/python	
+snippet fl
+	False
+snippet tr
+	True
+snippet trc
+	assert False
+snippet imp
+	import ${1:module}
+# Module Docstring
+snippet docs
+	'''
+	File: ${1:`Filename('$1.py', 'foo.py')`}
+	Author: ${2:`g:snips_author`}
+	Description: ${3}
+	'''
+snippet wh
+	while ${1:condition}:
+		${2:# code...}
+snippet for
+	for ${1:needle} in ${2:haystack}:
+		${3:# code...}
+# New Class
+snippet cl
+	class ${1:ClassName}(${2:object}):
+		"""
+    ${3:docstring for $1}
+    """
+		def __init__(self, *args, **kwargs):
+			super($1, self).__init__(*args, **kwargs)
+			${6}
+# New Function
+snippet def
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		"""${3}"""
+		${3:pass}
+		return {4}
+snippet deff
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		${3}
+# New Method
+snippet defs
+	def ${1:mname}(self, ${2:*args, **kwargs}):
+		${4:pass}
+		return {3}
+# New Property
+snippet property
+	def ${1:foo}():
+		doc = "${2:The $1 property.}"
+		def fget(self):
+			${3:return self._$1}
+		def fset(self, value):
+			${4:self._$1 = value}
+# Lambda
+snippet ld
+	${1:var} = lambda ${2:vars} : ${3:action}
+snippet .
+	self.
+snippet try Try/Except
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+snippet try Try/Except/Else
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
+snippet try Try/Except/Finally
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	finally:
+		${5:pass}
+snippet try Try/Except/Else/Finally
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
+	finally:
+		${6:pass}
+snippet if
+	if ${1}:
+		${2}
+# if __name__ == '__main__':
+snippet ifmain
+	if __name__ == '__main__':
+		${1:main()}
+# __magic__
+snippet super
+	super(${1}, self).${2}(*args, **kwargs)
+snippet rus
+	# -*- coding: utf-8 -*-
+snippet _
+	from django.utils.translation import ugettext as _
+snippet dic
+	{
+		'${1}' : ${2},
+		${3}
+	}
+snippet di
+	'${1}': ${2},${3}
+snippet li
+	'${1}',${2}
+snippet models
+	# -*- coding: utf-8 -*-
+	from django.db import models
+snippet views
+	# -*- coding:utf-8 -*-
+	from django.shortcuts import render
+	from django.shortcuts import render_to_response
+	from django.template import RequestContext
+	from django.http import Http404
+	from django.views.generic import ListView
+snippet urls
+	# -*- coding: utf-8 -*-
+	from django.conf.urls import patterns, include, url
+	from django.conf.urls.static import static
+	
+	urlpatterns = patterns('',
+		#url(r'^$', PortfoliosList.as_view(), name='portfolio__portfolios_list_page'),
+		#url(r'^(?P<slug>[^/]+)/$', 'main.portfolio.views.portfolio_detail_page', name='portfolio__portfolio_detail_page'),
+	)
+snippet forms
+	# -*- coding: utf-8 -*-
+	from django import forms
+snippet admin
+	# -*- coding: utf-8 -*-
+	from django.contrib import admin
+	from .models import *
+	
+	class ${1}Admin(admin.ModelAdmin):
+		list_display = ('id', 'title', 'slug',)
+	
+	admin.site.register(${1}, ${1}Admin);
+snippet importuser
+	from django.contrib.auth.models import User
+snippet viewcontext
+	def get_context_data(self, **kwargs):
+		context = super(${1}, self).get_context_data(**kwargs)
+		${2}
+		return context
+snippet modelclass
+	from django.contrib.contenttypes.models import ContentType
+	${1:model_name}_type = ContentType.objects.get(app_label='${2:app_name}', model='${3:model_class}')
+	$3 = $1_type.model_class()
+snippet model
+	class ${1}(models.Model):
+		${2}
+snippet modelmanager
+	class ${1:ModelName}Manager(models.Manager):
+		# objects = $1Manager()
+		def get_queryset(self):
+			qs = super($1Manager, self).get_queryset()
+			return qs.filter(${2})
+snippet modelqs
+	class ${1:ModelName}Queryset(models.query.QuerySet):
+		# return $1Queryset(self.model).${2:METHOD}()
+		def $2(self):
+			return self.filter(${3})
+snippet importreverse_lazy
+    from django.core.urlresolvers import reverse_lazy
+snippet get_context_data
+	def get_context_data(self, *args, **kwargs):
+		context = super(${1}, self).get_context_data(*args, **kwargs)
+		context.update({
+        	${2}
+		})
+		return context
+snippet __init__
+	def __init__(self, *args, **kwargs):
+    	super(${1}, self).__init__(*args, **kwargs)
+        ${2}
+snippet get_form_kwargs
+	def get_form_kwargs(self, *args, **kwargs):
+		kwargs = super(${1}, self).get_form_kwargs()
+		kwargs.update({
+			${2}
+		})
+		return kwargs
+snippet UpdateView
+	from django.views.generic.edit import UpdateView
+	class ${1}(UpdateView):
+		model = ${2}
+		template_name = ${3}
+        form_class = ${4}
+		context_object_name = ${5}
+		slug_field = 'pk'
+		slug_url_kwargs = 'pk'
+snippet CreateView
+	from django.views.generic.edit import CreateView
+	class ${1}(CreateView):
+		model = ${2}
+        fields = '__all__'
+        form_class = ${3}
+		template_name = ${4}
+snippet ListView
+	from django.views.generic import ListView
+	class ${1}(ListView):
+		model = ${2}
+        # paginate_by = 10
+		context_object_name = '${3}'
+		template_name = '${4}.html'
